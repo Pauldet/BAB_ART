@@ -24,6 +24,6 @@ class PieceOfArtsController < ApplicationController
   private
 
   def params_poa
-    params.require(:piece_of_art).permit(:name, :category, :daily_price, :picture, :description, :available_for_sale :buying_price)
+    params.require(:piece_of_art).permit(:name, :category, :daily_price, :picture, :description, :available_for_sale, :buying_price)
   end
 end
