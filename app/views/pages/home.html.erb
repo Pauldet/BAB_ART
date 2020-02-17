@@ -1,4 +1,15 @@
 
 <%= render 'shared/banner' %>
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="row">
+    <h1>Pages#home</h1>
+    <h3>Les plus appréciés</h3>
+    <%= render 'shared/swiper' %>
+</div>
+<div class="row">
+    <h3>Les nouveautés</h3>
+    <%= render 'shared/swiper' %>
+</div>
+<div class="row">
+    <h3>Celles qui pourraient vous plaire </h3>
+    <%= render 'shared/swiper' %>
+</div>

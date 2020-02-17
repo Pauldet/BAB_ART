@@ -1,10 +1,10 @@
+import Swiper from 'swiper'
+
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 
 import "bootstrap";
-
-
 
 // Wrap every letter in a span
 var textWrapper = document.querySelector('.ml5 .letters');
@@ -51,3 +51,26 @@ textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='let
       easing: "easeOutExpo",
       delay: 1000
     });
+
+var mySwiper = new Swiper ('.swiper-container', {
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+})
+
