@@ -7,10 +7,17 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <%= yield %>
+
+    <%= render 'shared/top-bar' %>
+    <div class="main-container" style='background-color: powderblue'>
+      <%= yield %>
+    </div>
+      <%= render 'shared/footer' %>
 
     <%= javascript_pack_tag 'application' %>
   </body>
