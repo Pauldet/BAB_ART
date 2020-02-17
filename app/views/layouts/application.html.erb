@@ -10,16 +10,13 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+
+    <%= render 'shared/top-bar' %>
     <div class="main-container" style='background-color: powderblue'>
-      <%= render 'shared/top-bar' %>
-
-
-
       <%= yield %>
-
+    </div>
       <%= render 'shared/footer' %>
 
-    </div>
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>
