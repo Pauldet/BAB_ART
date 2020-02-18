@@ -1,0 +1,11 @@
+
+<h1> <%= current_user.email %></h1>
+
+<ul>
+
+ <%  @piece_of_arts.each do |poa| %>
+
+<li> <%= poa.name %> </li>
+ <% end %>
+
+</ul>

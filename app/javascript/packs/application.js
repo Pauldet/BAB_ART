@@ -5,6 +5,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 import "bootstrap";
+import "../plugins/flatpickr"
 
 // Wrap every letter in a span
 var textWrapper = document.querySelector('.ml5 .letters');

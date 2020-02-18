@@ -4,7 +4,7 @@ class PieceOfArtsController < ApplicationController
 
   def index
     @piece_of_arts = PieceOfArt.all
-    @piece_of_arts_filtered = PieceOfArt.find(params[:search]) #Doubt on hwo to write params here
+    # @piece_of_arts_filtered = PieceOfArt.find(params[:search]) #Doubt on hwo to write params here
   end
 
   def show
@@ -16,14 +16,16 @@ class PieceOfArtsController < ApplicationController
   end
 
   def create
+
     @piece_of_art = PieceOfArt.new(params_poa)
+    @piece_of_art.user = current_user
     @piece_of_art.save
-    redirect_to user_path(current_user) #creer un nouveau controller
+    redirect_to user_path(current_user)
   end
 
   private
 
   def params_poa
-    params.require(:piece_of_art).permit(:name, :category, :daily_price, :picture, :description, :available_for_sale, :buying_price)
+    params.require(:piece_of_art).permit(:name, :category, :daily_price, :description, :artist_name, :creation_date, :available_for_sale, :buying_price)
   end
 end
