@@ -1,4 +1,4 @@
-.banner {
+.banner-search {
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1556855810-ac404aa91e85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);
   color: white;
   background-position: center;
@@ -12,7 +12,7 @@
 
 }
 
-.banner h1 {
+.banner-search h1 {
   margin: 0;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -20,15 +20,16 @@
   font-weight: bold;
 }
 
-.banner p {
+.banner-search p {
   font-size: 20px;
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-.search-bar {
+.container-search-bar {
     display: flex;
+    justify-content: center;
 
 }
 
