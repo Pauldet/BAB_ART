@@ -6,6 +6,7 @@
  <%  @piece_of_arts.each do |poa| %>
 
 <li> <%= poa.name %> </li>
+<%= cl_image_tag poa.photo.key %>
  <% end %>
 
 </ul>
