@@ -5,6 +5,15 @@
   grid-gap: 16px;
 }
 
+.card-search {
+  background: $main-color;
+  color: $main-text;
+  padding: 32px;
+  border-radius: 4px;
+  opacity: 0.9;
+
+}
+
 .card-product {
   overflow: hidden;
   background: white;

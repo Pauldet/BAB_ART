@@ -13,7 +13,7 @@ var textWrapper = document.querySelector('.moving-letters .letters');
 textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
 
-  anime.timeline({loop: true})
+  anime.timeline({loop: false})
     .add({
       targets: '.moving-letters .line',
       opacity: [0.5,1],
@@ -48,15 +48,22 @@ textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='let
       offset: '-=600'
     }).add({
       targets: '.moving-letters',
-      opacity: 0,
+      opacity: [1,0],
       duration: 1000,
       easing: "easeOutExpo",
       delay: 1000
+    }).add({
+      targets: '.moving-letters',
+      opacity: [0,1],
+      duration: 10,
+      easing: "easeOutExpo",
+      delay: 10
     });
 
+// Carrousel
 var mySwiper = new Swiper ('.swiper-container', {
   // Optional parameters
-  slidesPerView: 4,
+  slidesPerView: 1,
   slidesPerColumn: 1,
   slidesPerGroup: 3,
   spaceBetween: 20,
