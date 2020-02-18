@@ -1,0 +1,50 @@
+<div class="nav-bar">
+  <div class="nav-bar-expand-sm nav-bar-light px-5 d-flex align-items-center justify-content-between">
+    <div class="nav-bar-side">
+      <i class="fas fa-palette nav-bar-brand" style="font-size: 32px"></i>
+
+
+    </div>
+
+    <div class="moving-letters pt-4">
+        <h1 class="pb-4" style="font-size: 64px">
+          <span class="text-wrapper">
+            <span class="line line1"></span>
+            <span class="letters letters-left">Bab</span>
+            <span class="letters ampersand">&amp;</span>
+            <span class="letters letters-right">arT</span>
+            <span class="line line2"></span>
+          </span>
+        </h1>
+    </div>
+
+    <div class="nav-bar-side d-flex justify-content-end">
+      <div class="nav-bar-collapse">
+        <ul class="navbar-nav mr-auto list-group-horizontal">
+          <li class="nav-item active">
+            <%= link_to "List a piece of art", "/piece_of_arts/new", class: "btn btn-empty mx-1 list-group-item" %>
+          </li>
+          <li class="nav-item">
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Avatar
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/user/:id">My Profile</a>
+                <a class="dropdown-item" href="/bookings">My Bookings</a>
+                <a class="dropdown-item" href="/users/edit">Edit account info</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/users/sign_out" data-method= "delete">Log Out</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
