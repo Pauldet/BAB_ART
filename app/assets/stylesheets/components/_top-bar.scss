@@ -5,6 +5,13 @@
   background: white;
 }
 
+
+.top-bar-side {
+  // min-width: 30px;
+  width: 25vw;
+
+}
+
 // .top-bar .top-bar-collapse {
 //   flex-grow: 0;
 // }
@@ -17,14 +24,14 @@
 }
 
 
-.ml5 {
+.moving-letters {
   position: relative;
   font-weight: 300;
   font-size: 4.5em;
   color: #402d2d;
 }
 
-.ml5 .text-wrapper {
+.moving-letters .text-wrapper {
   position: relative;
   display: inline-block;
   padding-top: 0.1em;
@@ -33,7 +40,7 @@
   line-height: 1em;
 }
 
-.ml5 .line {
+.moving-letters .line {
   position: absolute;
   left: 0;
   top: 0;
@@ -45,7 +52,7 @@
   transform-origin: 0.5 0;
 }
 
-.ml5 .ampersand {
+.moving-letters .ampersand {
   font-family: Baskerville, "EB Garamond", serif;
   font-style: italic;
   font-weight: 400;
@@ -54,7 +61,43 @@
   margin-left: -0.1em;
 }
 
-.ml5 .letters {
+.moving-letters .letters {
   display: inline-block;
   opacity: 0;
+}
+
+//----------- responsive -------------//
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .top-bar {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .top-bar {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .top-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .top-bar {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .top-bar {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
