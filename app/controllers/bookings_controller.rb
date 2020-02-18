@@ -2,8 +2,8 @@ class BookingsController < ApplicationController
 
 
   def index
-    @bookings = Booking.where(id: current_user)
-    @pending_bookings = Booking.where(id: current_user, status: 'pending')
+    @bookings = Booking.where(user_id: current_user)
+    @pending_bookings = Booking.where(user_id: current_user, status: 'pending')
   end
 
   def show
