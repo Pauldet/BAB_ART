@@ -1,9 +1,12 @@
 <div class="top-bar">
   <div class="top-bar-expand-sm top-bar-light px-5 d-flex align-items-center justify-content-between">
+    <div class="top-bar-side">
+      <i class="fas fa-palette top-bar-brand" style="font-size: 32px"></i>
 
-    <i class="fas fa-palette top-bar-brand" style="font-size: 32px"></i>
 
-    <div class="ml5 pt-4">
+    </div>
+
+    <div class="moving-letters pt-4">
         <h1 class="pb-4" style="font-size: 64px">
           <span class="text-wrapper">
             <span class="line line1"></span>
@@ -15,15 +18,19 @@
         </h1>
     </div>
 
-    <div class="top-bar-collapse">
-      <ul class="navbar-nav mr-auto list-group-horizontal">
-        <li class="nav-item active">
-          <%= link_to "Se connecter", "#", class: "btn btn-outline-info mx-1 list-group-item" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "S'inscrire","#", class: "btn btn-outline-info mx-1 list-group-item" %>
-        </li>
-      </ul>
+    <div class="top-bar-side d-flex justify-content-end">
+      <div class="top-bar-collapse">
+        <ul class="navbar-nav mr-auto list-group-horizontal">
+          <li class="nav-item active">
+            <%= link_to "Sign in", "#", class: "btn btn-empty mx-1 list-group-item" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign up","#", class: "btn  btn-full mx-1 list-group-item" %>
+          </li>
+        </ul>
+      </div>
+
+
     </div>
 
   </div>

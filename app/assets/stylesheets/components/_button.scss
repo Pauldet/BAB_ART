@@ -1,0 +1,43 @@
+.btn-empty {
+    color: $yellow;
+    border-color: $yellow;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 8px 24px;
+      &:hover {
+        color: black;
+        background-color: $yellow;
+        border-color: $yellow;
+
+      }
+
+
+}
+
+
+.btn-full {
+  color: black;
+  background-color: $yellow;
+  border-color: $yellow;
+  border-radius: 4px;
+  padding: 8px 24px;
+    &:hover {
+          color: $yellow;
+          background-color: #FFFFFF;
+        }
+
+}
+
+
+.btn-search {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #1EDD88;
+  transition: background 0.3s ease;
+    &:hover {
+      background: #1BCB7F;
+      color: white;
+    }
+}
+
