@@ -4,7 +4,7 @@ class PieceOfArtsController < ApplicationController
 
   def index
     @piece_of_arts = PieceOfArt.all
-    @piece_of_arts_filtered = PieceOfArt.find(params[:search]) #Doubt on hwo to write params here
+    # @piece_of_arts_filtered = PieceOfArt.find(params[:search]) #Doubt on hwo to write params here
   end
 
   def show
