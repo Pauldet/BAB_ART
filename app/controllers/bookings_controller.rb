@@ -2,7 +2,8 @@ class BookingsController < ApplicationController
 
 
   def index
-    @bookings = booking.search(current_user)  #to check with TA
+    @bookings = Booking.where(id: current_user)
+    @pending_bookings = Booking.where(id: current_user, status: 'pending')
   end
 
   def show
@@ -23,16 +24,22 @@ class BookingsController < ApplicationController
   # end
 
   def new
+    @piece_of_art = PieceOfArt.find(params[:piece_of_art_id])
     @booking = Booking.new()
+
   end
 
 
   def create
     @booking = Booking.new(params_booking)
     @booking.piece_of_art_id = params[:piece_of_art_id]
-    @booking.user_id = @current_user
-    @booking.number_of_days = (@booking.end_date - @booking.start_date).to_i #.stringify pour jouer avec ?
-    @total_price = @booking.number_of_days * @booking.piece_of_art.daily_price
+    @booking.user_id = current_user.id
+    @booking.status = 'pending'
+    @booking.number_of_days = (@booking.end_date - @booking.start_date).to_i
+    @booking.total_price = @booking.number_of_days * @booking.piece_of_art.daily_price
+    @booking.save
+    redirect_to user_path(current_user)
+
   end
 
 
