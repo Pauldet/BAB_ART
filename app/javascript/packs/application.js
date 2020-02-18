@@ -1,4 +1,5 @@
 import Swiper from 'swiper'
+// import { mySwiperfunction } from '../components/myswiper'
 
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
@@ -54,6 +55,10 @@ textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='let
 
 var mySwiper = new Swiper ('.swiper-container', {
   // Optional parameters
+  slidesPerView: 4,
+  slidesPerColumn: 1,
+  slidesPerGroup: 3,
+  spaceBetween: 20,
   direction: 'horizontal',
   loop: true,
 
@@ -72,5 +77,18 @@ var mySwiper = new Swiper ('.swiper-container', {
   scrollbar: {
     el: '.swiper-scrollbar',
   },
+  // breakpoints: {
+  //   1199: {
+  //       slidesPerView: 3,
+  //   },
+  //   991: {
+  //       slidesPerView: 2,
+  //   },
+  //   600: {
+  //       slidesPerView: 1,
+  //   },
+  // }
 })
+
+
 
