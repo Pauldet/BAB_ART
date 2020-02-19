@@ -17,13 +17,11 @@
       <p>Description: <br><%= @piece_of_art.description %></p>
     </div>
     <button name="button" type="submit" class="btn btn-empty">
-      <i class="fas fa-palette"><%= link_to 'Book it!', new_piece_of_art_booking_path(@piece_of_art) %></i>
+      <i class="fas fa-palette"> <%= link_to 'Book it!', new_piece_of_art_booking_path(@piece_of_art) %>
+      </i>
     </button>
 
 
-
-<!--      /piece_of_arts/:piece_of_art_id/bookings/new(.:format)
- -->
   </div>
 </div>
 

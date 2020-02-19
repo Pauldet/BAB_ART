@@ -1,9 +1,23 @@
 <h1> Booking for <%= @piece_of_art.name %></h1>
+<div class="card-show-poa">
+    <% if @piece_of_art.photo.attached? %>
+      <div class="card-picture my-3" style="background-image: url(<%= cl_image_path(@piece_of_art.photo.key, height: 300, width: 400, crop: :fill) %>);">
+      </div>
+    <% else %>
+      <div class="card-picture" style="background-image: url(<%= image_path('https://images.unsplash.com/photo-1555443805-658637491dd4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=932&q=80') %>);">
+      </div>
+    <% end %>
 
-<%= simple_form_for [@piece_of_art, @booking] do |f| %>
+    <div class="card-description">
+      <h1><%= @piece_of_art.name %> </h1>
+      <h2><%= @piece_of_art.artist_name %> </h2>
 
-  <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-  <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-  <%= f.button :submit, "Go", class: "btn btn-primary" %>
+      <%= simple_form_for [@piece_of_art, @booking] do |f| %>
 
-<% end %>
+        <%= f.input :start_date, as: :string, required: false, placeholder: 'start date' ,input_html: {class: "datepicker"} %>
+        <%= f.input :end_date, as: :string, required: false, placeholder: 'end date', input_html: {class: "datepicker"} %>
+        <%= f.button :submit, "Go", class: "btn btn-empty mt-3" %>
+
+      <% end %>
+    </div>
+</div>

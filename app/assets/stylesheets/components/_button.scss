@@ -1,42 +1,34 @@
 .btn-empty {
-    color: $yellow;
-    border-color: $yellow;
+    color: $btn-full;
+    border-color: $btn-full;
     background-color: #FFFFFF;
     border-radius: 4px;
     padding: 8px 24px;
       &:hover {
-        color: black;
-        background-color: $yellow;
-        border-color: $yellow;
+        color: white;
+        background-color: $btn-full;
+        border-color: $btn-full;
         a {
-          color: black;
+          color: white;
           text-decoration: none;
-
-
         }
-
       }
     a {
-      color: $yellow;
-
+      color: $btn-full;
     }
-
-
-
 }
 
 
 .btn-full {
-  color: black;
-  background-color: $yellow;
-  border-color: $yellow;
+  color: white;
+  background-color: $btn-full;
+  border-color: $btn-full;
   border-radius: 4px;
   padding: 8px 24px;
     &:hover {
-          color: $yellow;
+          color: $btn-full;
           background-color: #FFFFFF;
         }
-
 }
 
 
