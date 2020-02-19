@@ -65,7 +65,7 @@ var mySwiper = new Swiper ('.swiper-container', {
   // Optional parameters
   slidesPerView: 1,
   slidesPerColumn: 1,
-  slidesPerGroup: 3,
+  slidesPerGroup: 1,
   spaceBetween: 20,
   direction: 'horizontal',
   loop: true,

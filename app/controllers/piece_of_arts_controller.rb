@@ -19,8 +19,11 @@ class PieceOfArtsController < ApplicationController
 
     @piece_of_art = PieceOfArt.new(params_poa)
     @piece_of_art.user = current_user
-    @piece_of_art.save
-    redirect_to user_path(current_user)
+    if @piece_of_art.save
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
   end
 
   private
