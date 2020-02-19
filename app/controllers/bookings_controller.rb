@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
 
   def update
   @user = current_user
+  raise
   #addevent listener en fonction du boutton je change le status en "confirmed" ou "cancelled"
   #formulaire avec un object booking avec un champ caché qui me met le status
 

@@ -6,12 +6,17 @@
 <ul>
   <% @pending_bookings.each do |booking| %>
 
-  <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %> <%= link_to "Accept Booking", booking_path(booking) %> <%= link_to "Refuse Booking", booking_path(booking) %></li>
+  <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
+
+  <form action="/booking/'#{booking.id}'" > <input type="submit" class="btn btn-primary" value="Approve" name="Approve" onClick="">
+
+  </form>
+  </li>
 
   <% end %>
 
 </ul>
 
-<h2> currently booked </h2>
+<h2> Currently booked </h2>
 
 <h2> Past bookings </h2>
