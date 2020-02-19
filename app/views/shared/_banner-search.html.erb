@@ -1,11 +1,13 @@
-<div class="banner-search" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1549887534-1541e9326642?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80);">
-  <div class="container">
-    <div class="container-search-bar">
+<!-- <div class="banner-search" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1549887534-1541e9326642?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80);"> -->
+  <!-- <div class="container"> -->
+    <div class="container-search-bar" >
       <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-      <div class="card-search">
-        <%= f.input :category, as: :check_boxes, collection: ['painting', 'sculture'] %>
+      <div class="card-search d-flex flex-column" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(https://images.unsplash.com/photo-1549887534-1541e9326642?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80);">
+        <%= f.input :category, as: :check_boxes, collection: ['painting', 'sculture','photography', 'drawing'] %>
+        <div class="d-inline-flex justify-content-between">
         <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
         <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+        </div>
         <div class="search-form-control form-group">
           <input class="form-control string required" type="text" name="search[query]" id="search_query" />
         </div>
@@ -18,5 +20,5 @@
     </div>
 
 
-  </div>
-</div>
+ <!--  </div> -->
+<!-- </div> -->

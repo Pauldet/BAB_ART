@@ -1,34 +1,37 @@
 
 <%= render 'shared/banner-search' %>
-
-<div class="row">
-  <h3>Most wanted</h3>
-</div>
-<div class="row">
-  <div class="swiper-container">
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
-    <div class="swiper-wrapper">
-      <% @piece_of_arts.each do |poa| %>
-      <div class="swiper-slide">
-        <div class="card-product mr-5">
-          <%= cl_image_tag poa.photo.key %>
-          <div class="card-product-infos">
-            <h2><%= poa.name %></h2>
-            <p><%= poa.artist_name %></p>
-            <p><%= poa.daily_price%></p>
+<div class="main-container" style='background-color: grey'>  %>
+  <div class="row">
+    <h3>Most wanted</h3>
+  </div>
+  <div class="row">
+    <div class="swiper-container">
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+      <div class="swiper-wrapper">
+        <% @piece_of_arts.each do |poa| %>
+        <div class="swiper-slide">
+          <div class="card-product mr-5">
+          <% if poa.photo.attached? %>
+              <%= cl_image_tag poa.photo.key %>
+            <% end %>
+            <div class="card-product-infos">
+              <h2><%= poa.name %></h2>
+              <p><%= poa.artist_name %></p>
+              <p><%= poa.daily_price%></p>
+            </div>
           </div>
         </div>
+        <% end %>
       </div>
-      <% end %>
-    </div>
-</div>
-</div>
-<div class="row">
-  <h3>Latest pieces</h3>
-</div>
-<div class="row">
-  <%= render 'shared/swiper' %>
+  </div>
+  </div>
+  <div class="row">
+    <h3>Latest pieces</h3>
+  </div>
+  <div class="row">
+    <%= render 'shared/swiper' %>
+  </div>
 </div>
 
 

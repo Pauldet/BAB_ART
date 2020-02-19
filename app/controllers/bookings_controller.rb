@@ -10,9 +10,10 @@ class BookingsController < ApplicationController
     @booking = booking.find(params[:id])
   end
 
-  # def update
-  #   @user = current_user
-
+  def update
+  @user = current_user
+  #addevent listener en fonction du boutton je change le status en "confirmed" ou "cancelled"
+  #formulaire avec un object booking avec un champ caché qui me met le status
 
   #   if booking.status = 'pending'
   #      status =
@@ -22,6 +23,7 @@ class BookingsController < ApplicationController
   #   end
   #   @booking = booking.find(params[:id])
   # end
+end
 
   def new
     @piece_of_art = PieceOfArt.find(params[:piece_of_art_id])
