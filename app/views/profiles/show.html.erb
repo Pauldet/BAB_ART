@@ -4,9 +4,10 @@
 <ul>
 
  <%  @piece_of_arts.each do |poa| %>
-
-<li> <%= poa.name %> </li>
-<%= cl_image_tag poa.photo.key %>
+  <li> <%= poa.name %> </li>
+  <% if poa.photo.attached? %>
+    <%= cl_image_tag poa.photo.key %>
+  <% end %>
  <% end %>
 
 </ul>
