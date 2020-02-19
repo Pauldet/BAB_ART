@@ -1,9 +1,12 @@
-const mySwiperfunction = () => {
+import Swiper from 'swiper';
+
+const initCarrousel = () => {
   var mySwiper = new Swiper ('.swiper-container', {
     // Optional parameters
-    slidesPerView: 3,
+    slidesPerView: 1,
+    slidesPerColumn: 1,
+    slidesPerGroup: 1,
     spaceBetween: 20,
-    slidesPerGroup: 3,
     direction: 'horizontal',
     loop: true,
 
@@ -22,17 +25,18 @@ const mySwiperfunction = () => {
     scrollbar: {
       el: '.swiper-scrollbar',
     },
-  })
-
+    // breakpoints: {
+    //   1199: {
+    //       slidesPerView: 3,
+    //   },
+    //   991: {
+    //       slidesPerView: 2,
+    //   },
+    //   600: {
+    //       slidesPerView: 1,
+    //   },
+    // }
+  });
 }
 
-// export { mySwiperfunction };
-
-// var swiper = new Swiper('.swiper-container', {
-//       slidesPerView: 3,
-//       spaceBetween: 30,
-//       pagination: {
-//         el: '.swiper-pagination',
-//         clickable: true,
-//       },
-//     });
+export default initCarrousel;
