@@ -4,12 +4,12 @@
 <%= simple_form_for @piece_of_art do |f| %>
   <%= f.input :name %>
   <%= f.input :category %>
-  <%= f.input :daily_price, as: :integer %>
+  <%= f.input :daily_price, placeholder: 'euros', as: :integer %>
   <%= f.input :description, as: :text %>
   <%= f.input :artist_name %>
   <%= f.input :creation_date, as: :integer %>
   <%= f.input :available_for_sale, as: :boolean %>
-  <%= f.input :buying_price, as: :integer %>
+  <%= f.input :buying_price, placeholder: 'euros', as: :integer %>
   <%= f.input :photo, as: :file %>
   <%= f.button :submit %>
 <% end %>
