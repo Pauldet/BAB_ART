@@ -17,9 +17,13 @@
   <body>
 
     <%= render 'shared/nav-bar' %>
-    <div class="main-container" style='background-color: powderblue'>
+    <% unless controller_name == 'piece_of_arts' && action_name == 'index' %>
+     <div class="main-container" style='background-color: grey'>  %>
+    <% end %>
       <%= yield %>
+    <% unless controller_name == 'piece_of_arts' && action_name == 'index' %>
     </div>
+    <% end %>
       <%= render 'shared/footer' %>
 
     <%= javascript_pack_tag 'application' %>

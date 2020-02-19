@@ -9,7 +9,6 @@ class PieceOfArtsController < ApplicationController
 
   def show
     @piece_of_art = PieceOfArt.find(params[:id])
-    # redirect_to piece_of_arts_path
   end
 
   def new

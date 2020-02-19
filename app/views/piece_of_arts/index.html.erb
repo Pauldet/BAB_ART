@@ -1,6 +1,5 @@
 
 <%= render 'shared/banner-search' %>
-
 <div class="row">
   <h3>Most wanted</h3>
 </div>
@@ -19,18 +18,19 @@
             <h2><%= poa.name %></h2>
             <p><%= poa.artist_name %></p>
             <p><%= poa.daily_price%></p>
+
           </div>
         </div>
+        <% end %>
       </div>
-      <% end %>
-    </div>
-</div>
-</div>
-<div class="row">
-  <h3>Latest pieces</h3>
-</div>
-<div class="row">
-  <%= render 'shared/swiper' %>
+  </div>
+  </div>
+  <div class="row">
+    <h3>Latest pieces</h3>
+  </div>
+  <div class="row">
+    <%= render 'shared/swiper' %>
+  </div>
 </div>
 
 

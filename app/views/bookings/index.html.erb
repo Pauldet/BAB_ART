@@ -6,8 +6,8 @@
 <ul>
   <% @pending_bookings.each do |booking| %>
 
-  <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %></li>
-<%= raise %>
+  <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %> <%= link_to "Accept Booking", booking_path(booking) %> <%= link_to "Refuse Booking", booking_path(booking) %></li>
+
   <% end %>
 
 </ul>
