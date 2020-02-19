@@ -2,7 +2,7 @@
   <!-- <div class="container"> -->
     <div class="container-search-bar" >
       <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-      <div class="card-search d-flex flex-column" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(https://images.unsplash.com/photo-1549887534-1541e9326642?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80);">
+      <div class="card-search d-flex flex-column" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(https://images.unsplash.com/photo-1552312097-8ef75595e2a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1550&q=80);">
         <%= f.input :category, as: :check_boxes, collection: ['painting', 'sculture','photography', 'drawing'] %>
         <div class="d-inline-flex justify-content-between">
         <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
