@@ -1,57 +1,28 @@
 
 <%= render 'shared/banner-search' %>
 <div class="below-banner-container">
-  <div class="row carrousel-title">
-    <h3>Most wanted</h3>
-  </div>
-  <div class="row">
-    <div class="swiper-container">
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-      <div class="swiper-wrapper">
-        <% @piece_of_arts.each do |poa| %>
-        <div class="swiper-slide">
-          <div class="card-product mr-5">
-            <% if poa.photo.attached? %>
-              <%= cl_image_tag poa.photo.key %>
-            <% end %>
-            <div class="card-product-infos">
-              <h2><%= link_to poa.name, piece_of_art_path(poa) %></h2>
-              <p><%= poa.artist_name %></p>
-              <p><%= poa.daily_price%> €</p>
-            </div>
-          </div>
-        </div>
-        <% end %>
-    </div>
-    </div>
-  </div>
-    <div class="row carrousel-title">
-      <h3>Latest pieces</h3>
-    </div>
-    <div class="row">
-      <div class="swiper-container">
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-          <div class="swiper-wrapper">
-          <% @piece_of_arts.each do |poa| %>
-          <div class="swiper-slide">
-            <div class="card-product mr-5">
-              <% if poa.photo.attached? %>
-                <%= cl_image_tag poa.photo.key %>
-              <% end %>
-              <div class="card-product-infos">
-                <h2><%= link_to poa.name, piece_of_art_path(poa) %></h2>
-                <p><%= poa.artist_name %></p>
-                <p><%= poa.daily_price%> €</p>
+  <section class="carrousel x-mandatory">
+    <div class="carrousel-items">
+      <h2>Most Wanted</h2>
+            <% @piece_of_arts.each do |poa| %>
+            <div class="carrousel-item">
+              <div class="carrousel-card">
+                    <div class="carrousel-img">
+                      <%= cl_image_tag poa.photo.key  %>
+
+                    </div>
+                    <h3><%= poa.name %></h3>
+                    <h4><%= poa.artist_name %></h4>
+                    <div class="card-content">
+                      <p><%= poa.description %></p>
+                      <p>Daily price <%= poa.daily_price %> €</p>
+                    </div>
+                  <% end %>
               </div>
             </div>
-          </div>
-          <% end %>
-        </div>
-      </div>
+
+
+
     </div>
-</div>
-
-
+  </section>
 
