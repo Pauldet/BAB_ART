@@ -57,13 +57,18 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(params_booking)
+    @piece_of_art = PieceOfArt.find(params[:piece_of_art_id])
     @booking.piece_of_art_id = params[:piece_of_art_id]
     @booking.user_id = current_user.id
-    @booking.status = 'pending'
-    @booking.number_of_days = (@booking.end_date - @booking.start_date).to_i
-    @booking.total_price = @booking.number_of_days * @booking.piece_of_art.daily_price
-    @booking.save
-    redirect_to user_path(current_user)
+    if @booking.valid?
+      @booking.status = 'pending'
+      @booking.number_of_days = (@booking.end_date - @booking.start_date).to_i
+      @booking.total_price = @booking.number_of_days * @booking.piece_of_art.daily_price
+      @booking.save
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
 
   end
 

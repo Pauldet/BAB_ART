@@ -1,29 +1,37 @@
-<h1 class=""> Booking for </h1>
 <div class="card-show-poa">
-    <% if @piece_of_art.photo.attached? %>
-      <div class="card-picture my-3" style="background-image: url(<%= cl_image_path(@piece_of_art.photo.key, height: 300, width: 400, crop: :fill) %>);">
-      </div>
-    <% else %>
-      <div class="card-picture" style="background-image: url(<%= image_path('https://images.unsplash.com/photo-1555443805-658637491dd4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=932&q=80') %>);">
-      </div>
-    <% end %>
-
-    <div class="card-description">
-      <h1><%= @piece_of_art.name %> </h1>
-      <h2><%= @piece_of_art.artist_name %> </h2>
-      <% if @piece_of_art.available? %>
-      <p>It is available</p>
-      <% else %>
-      <p style="color: red">Sorry, it is not available</p>
-      <% end %>
-
-      <%= simple_form_for [@piece_of_art, @booking] do |f| %>
-
-        <%= f.input :start_date, as: :string, required: false, placeholder: 'start date' ,input_html: {class: "datepicker"} %>
-        <%= f.input :end_date, as: :string, required: false, placeholder: 'end date', input_html: {class: "datepicker"} %>
-        <%= f.button :submit, "Go", class: "btn btn-empty mt-3" %>
-        <%= f.button :submit, "Go back", url: '/root', class: "btn btn-empty mt-3" %>
-
-      <% end %>
+  <% if @piece_of_art.photo.attached? %>
+    <div class="card-picture my-3" style="background-image: url(<%= cl_image_path(@piece_of_art.photo.key, height: 300, width: 400, crop: :fill) %>);">
     </div>
+  <% else %>
+    <div class="card-picture" style="background-image: url(<%= image_path('https://images.unsplash.com/photo-1555443805-658637491dd4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=932&q=80') %>);">
+    </div>
+  <% end %>
+
+  <div class="card-description">
+    <h1><%= @piece_of_art.name %> </h1>
+    <h2><%= @piece_of_art.artist_name %> </h2>
+    <div id="daily_price" data-price="<%= @piece_of_art.daily_price %>">
+      <p>Daily price: <%= @piece_of_art.daily_price %> €</p>
+    </div>
+      <div class=" d-inline-flex">
+        <%= simple_form_for [@piece_of_art, @booking], :html => { :class => 'form-inline' } do |f| %>
+          <div class="input-group " id= "booking-input-form">
+            <%= f.input :start_date, as: :string, label: false, placeholder: 'from' ,input_html: {class: "datepicker", id: "start_date"} %>
+            <%= f.input :end_date, as: :string, label: false, placeholder: 'until', input_html: {class: "datepicker", id: "end_date"} %>
+          </div>
+        <%= f.button :submit, "Book now!", class: "btn btn-empty mt-3", id: "booking-submit-button" %>
+        <% end %>
+      </div>
+          <div id="booking-cart">
+            <div class="row mt-1">
+              <p><%="Days: "%></p>
+              <span id="number_of_days"></span>
+            </div>
+            <div class="row">
+              <p><%="Total: "%></p>
+              <span id="total_price"></span>
+            </div>
+          </div>
+  </div>
 </div>
+
