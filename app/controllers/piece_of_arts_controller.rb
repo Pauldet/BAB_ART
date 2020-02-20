@@ -26,6 +26,8 @@ class PieceOfArtsController < ApplicationController
     end
   end
 
+
+
   private
 
   def params_poa
