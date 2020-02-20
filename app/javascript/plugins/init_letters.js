@@ -36,16 +36,10 @@ const initLetters = () => {
       offset: '-=600'
     }).add({
       targets: '.moving-letters',
-      opacity: [1,0],
-      duration: 1000,
-      easing: "easeOutExpo",
-      delay: 1000
-    }).add({
-      targets: '.moving-letters',
       opacity: [0,1],
-      duration: 10,
+      duration: 6000,
       easing: "easeOutExpo",
-      delay: 10
+      delay: 200
   });
 }
 
