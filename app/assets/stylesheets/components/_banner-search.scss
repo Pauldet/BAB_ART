@@ -15,9 +15,15 @@
 .banner-search h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2),
+               1px 1px 3px rgba(0,0,0,0.2),
+               1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
+}
+
+#slogan {
+  color: blue;
 }
 
 .banner-search p {
@@ -68,7 +74,31 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
+.dates-form {
+  margin-top: 16px
+}
 // Checkboxes design
+// Form design
+.checkboxes-post {
+  background: white;
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    color: #666666;
+    margin-bottom: 50px;
+    margin-top: 0px;
+  }
+  .btn {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+  }
+}
+
 .category-choices {
   display: flex;
   justify-content: space-between;
@@ -77,19 +107,19 @@
 }
 
 .category-choice {
-  background: #b7b7b7;
-  padding: 20px;
+  background: $light-gray;
+  padding: 8px;
   border-radius: 5px;
   opacity: .4;
   flex: 0 0 30%;
   text-align: center;
   &:hover {
-    opacity: 1;
+    opacity: 0.8;
     cursor: pointer;
   }
   &.active {
-  background: blue;
-  color: white;
+  background: $btn-full;
+  color: $light-gray;
   opacity: 1;
   }
 }
