@@ -20,7 +20,21 @@
             %>
           </div>
         </div>
-        <%= f.input :category, as: :select, collection: ['painting', 'sculture','photography', 'drawing'], label: false, prompt: 'Choose categories' %>
+        <div class="form-group" style="color: white">
+          <!-- <label class="control-label check_boxes optional">Categories</label> -->
+          <input type="hidden" name="post[categories][]" value="">
+
+          <div class="category-choices">
+            <% PieceOfArt.all.each do |category| %>
+              <input hidden type="checkbox" value="<%= category.category %>" name="post[categories][]" id="post_categories_<%= category.category %>">
+
+              <label for="post_categories_<%= category.category %>">
+                <%= category.category %>
+              </label>
+            <% end %>
+           </div>
+        </div>
+        <%= f.input :category, as: :select, collection: ['painting', 'sculpture','photography', 'drawing'], label: false, prompt: 'Choose categories' %>
 <!--         <div class="search-form-control form-group">
           <input class="form-control string required" type="text" name="search[query]" id="search_query" />
           <button name="button" type="submit" class="btn btn-full">
