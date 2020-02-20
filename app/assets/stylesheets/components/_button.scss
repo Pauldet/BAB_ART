@@ -3,7 +3,7 @@
     border-color: $btn-full;
     background-color: #FFFFFF;
     border-radius: 4px;
-    padding: 8px 24px;
+    padding: 8px;
       &:hover {
         color: white;
         background-color: $btn-full;
@@ -43,4 +43,10 @@
       color: white;
     }
 }
+#book-now-show-poa {
+  position:absolute;
+  left: 8em; bottom: 0em;
+  z-index: 5;
+  opacity: 1;
 
+}
