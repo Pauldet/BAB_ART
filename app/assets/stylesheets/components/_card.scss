@@ -15,6 +15,10 @@
   width: 100vw;
     #slogan {
       color: $light-gray;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2),
+                   1px 1px 3px rgba(0,0,0,0.2),
+                   1px 1px 3px rgba(0,0,0,0.2),
+                   1px 1px 3px rgba(0,0,0,0.2);
     }
   .form-control:disabled, .form-control[readonly] {
     background-color: #fff;
