@@ -1,8 +1,8 @@
 
 <h1> <%= current_user.email %></h1>
 
+<h2> My Piece of Arts </h2>
 <ul>
-
  <%  @piece_of_arts.each do |poa| %>
   <li> <%= poa.name %> </li>
   <% if poa.photo.attached? %>
@@ -10,4 +10,55 @@
   <% end %>
  <% end %>
 
+</ul>
+
+
+
+
+<h3> Waiting for owner's approval </h3>
+
+ <ul>
+        <% @pending_bookings.each do |booking| %>
+
+        <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
+
+              <%= simple_form_for(booking) do |f| %>
+                <%= f.submit "Cancel", name:'Action', class:'btn-danger' %>
+              <% end %>
+        </li>
+        <% end %>
+  </ul>
+
+
+
+<h2> My next bookings </h2>
+
+<ul>
+        <% @approved_bookings.each do |booking| %>
+
+        <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
+
+              <%= simple_form_for(booking) do |f| %>
+                <%= f.submit "Cancel", name:'Action', class:'btn-danger' %>
+              <% end %>
+        </li>
+        <% end %>
+</ul>
+
+
+<h2> Currently at Home </h2>
+
+<ul>
+        <% @ongoing_bookings.each do |booking| %>
+
+        <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %> </li>
+        <% end %>
+</ul>
+
+<h2> Past Bookings </h2>
+<ul>
+        <% @past_bookings.each do |booking| %>
+
+        <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %> </li>
+        <% end %>
 </ul>
