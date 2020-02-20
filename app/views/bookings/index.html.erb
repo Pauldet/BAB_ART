@@ -1,71 +1,124 @@
+<div class="show-poa-container">
+  <div class="card-show-poa">
+    <% if current_user.user_banner.attached? %>
+      <div class="card-picture" style="background-image: url(<%= cl_image_path(current_user.user_banner.photo.key, height: 300, width: 400, crop: :fill) %>);">
+      </div>
+    <% else %>
+      <div class="card-picture" style="background-image: url(<%= image_path('https://images.unsplash.com/photo-1555443805-658637491dd4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=932&q=80') %>);">
+      </div>
+    <% end %>
+
+
+<% if @owner_pending_bookings.blank? && @owner_approved_bookings.blank? && @owner_ongoing_bookings.blank? && @owner_past_bookings.blank? %>
+<p> You have no booking history yet </p>
+<% end %>
+
+<% if @owner_pending_bookings.present? || @owner_approved_bookings.present? || @owner_ongoing_bookings.present? || @owner_past_bookings.present? %>
 <h1> My Dashboard </h1>
+<% end %>
 
-
+<% if @owner_pending_bookings.present? %>
   <h2> Pending my review </h2>
 
   <ul>
     <% @owner_pending_bookings.each do |booking| %>
-    <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
-
-          <%= simple_form_for(booking) do |f| %>
-            <%= f.submit "Approve", name:'Action', class:'btn-primary' %>
-            <%= f.submit "Decline", name:'Action', class:'btn-danger' %>
-          <% end %>
-    <!-- <form action="/booking/'#{booking.id}'" > <input type="submit" class="btn btn-primary" value="Approve" name="Approve" onClick="">
-  raise
-    </form> -->
-    </li>
-
+    <div class="card-pro-poa mr-5">
+        <% if booking.piece_of_art.photo.attached? %>
+          <%= cl_image_tag booking.piece_of_art.photo.key %>
+        <% end %>
+        <div class="card-product-infos">
+          <h2><%= booking.piece_of_art.name %></h2>
+            <p>Start Date: <%= booking.start_date %></p>
+            <p>End Date: <%= booking.start_date %></p>
+            <p>Total Price:<%= booking.total_price%>€</p>
+            <%= simple_form_for(booking) do |f| %>
+            <%= f.submit "Cancel", name:'Action', class:'btn-danger' %>
+            <% end %>
+        </div>
+    </div>
     <% end %>
   </ul>
+<% end %>
 
+<% if @owner_approved_bookings.present? %>
   <h2> Accepted bookings </h2>
   <ul>
       <% @owner_approved_bookings.each do |booking| %>
-
-      <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
-
-            <%= simple_form_for(booking) do |f| %>
-              <%= f.submit "Cancel", name:'Action', class:'btn-danger' %>
-            <% end %>
-      </li>
+        <div class="card-pro-poa mr-5">
+      <% if booking.piece_of_art.photo.attached? %>
+        <%= cl_image_tag booking.piece_of_art.photo.key %>
       <% end %>
-  </ul>
+      <div class="card-product-infos">
+        <h2><%= booking.piece_of_art.name %></h2>
+        <p>Start Date: <%= booking.start_date %></p>
+        <p>End Date: <%= booking.start_date %></p>
+        <p>Total Price:<%= booking.total_price%>€</p>
+        <%= simple_form_for(booking) do |f| %>
+          <%= f.submit "Cancel", name:'Action', class:'btn-danger' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</ul>
+<% end %>
 
+<% if @owner_ongoing_bookings.present? %>
   <h2> Currently Booked </h2>
   <ul>
-      <% @owner_ongoing_bookings.each do |booking| %>
-
-      <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
-
-            <%= simple_form_for(booking) do |f| %>
-              <%= f.submit "Cancel", name:'Action', class:'btn-danger' %>
-            <% end %>
-      </li>
-      <% end %>
-  </ul>
-
-  <h2> Past bookings </h2>
-  <ul>
-  <% @owner_past_bookings.each do |booking| %>
-
-      <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
-      </li>
-  <% end %>
-  </ul>
-
-  <h2> Declined Bookings </h2>
-  <ul>
-    <% @owner_declined_bookings.each do |booking| %>
-
-          <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
-          </li>
+    <% @owner_ongoing_bookings.each do |booking| %>
+      <div class="card-pro-poa mr-5">
+        <% if booking.piece_of_art.photo.attached? %>
+          <%= cl_image_tag booking.piece_of_art.photo.key %>
+        <% end %>
+        <div class="card-product-infos">
+        <h2><%= booking.piece_of_art.name %></h2>
+          <p>Start Date: <%= booking.start_date %></p>
+          <p>End Date: <%= booking.start_date %></p>
+          <p>Total Price:<%= booking.total_price%>€</p>
+        </div>
+      </div>
     <% end %>
   </ul>
+<% end %>
 
 
-<!-- @owner_pending_bookings = current_user.booked_poa.map { |booking| booking if booking.status == 'pending'  }.compact
-    @owner_approved_bookings = current_user.booked_poa.map { |booking| booking if booking.status == 'approved'  }.compact
-    @owner_ongoing_bookings = current_user.booked_poa.map { |booking| booking if booking.status == 'ongoing'  }.compact
-    @owner_past_bookings = current_user.booked_poa.map { |booking| booking if booking.status == 'terminated'  }.compact
-    @owner_declined_bookings = current_user.booked_poa.map { |booking| booking if booking.status == 'declined'  }.compact -->
+  <% if @owner_past_bookings.present? %>
+    <h2> Past Bookings </h2>
+        <ul>
+          <% @past_bookings.each do |booking| %>
+            <div class="card-pro-poa mr-5">
+              <% if booking.piece_of_art.photo.attached? %>
+                <%= cl_image_tag booking.piece_of_art.photo.key %>
+              <% end %>
+              <div class="card-product-infos">
+                <h2><%= booking.piece_of_art.name %></h2>
+                <p>Start Date: <%= booking.start_date %></p>
+                <p>End Date: <%= booking.start_date %></p>
+                <p>Total Price:<%= booking.total_price%>€</p>
+                <h2><%= link_to 'Rate & review', booking_path(booking) %></h2>
+              </div>
+            </div>
+          <% end %>
+        </ul>
+    <% end %>
+
+  <% if @owner_declined_bookings.present? %>
+    <h2> Booking Declined </h2>
+    <ul>
+      <% @owner_declined_bookings.each do |booking| %>
+        <div class="card-pro-poa mr-5">
+          <% if booking.piece_of_art.photo.attached? %>
+            <%= cl_image_tag booking.piece_of_art.photo.key %>
+          <% end %>
+          <div class="card-product-infos">
+          <h2><%= booking.piece_of_art.name %></h2>
+            <p>Start Date: <%= booking.start_date %></p>
+            <p>End Date: <%= booking.start_date %></p>
+            <p>Total Price:<%= booking.total_price%>€</p>
+          </div>
+        </div>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
