@@ -15,6 +15,10 @@
   width: 100vw;
     #slogan {
       color: $light-gray;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2),
+                   1px 1px 3px rgba(0,0,0,0.2),
+                   1px 1px 3px rgba(0,0,0,0.2),
+                   1px 1px 3px rgba(0,0,0,0.2);
     }
   .form-control:disabled, .form-control[readonly] {
     background-color: #fff;
@@ -93,4 +97,42 @@
   margin-right: 8px;
   margin-left: 8px;
   position: relative;
+}
+
+
+
+//
+
+ .card-pro-poa {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.card-pro-poa img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-pro-poa h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-pro-poa p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-pro-poa .card-product-infos {
+  padding-left: 10px;
 }

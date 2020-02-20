@@ -4,6 +4,9 @@ class PieceOfArtsController < ApplicationController
 
   def index
     @piece_of_arts = PieceOfArt.all
+    @categories = @piece_of_arts.uniq do |poa|
+      poa.category
+    end
     # @piece_of_arts_filtered = PieceOfArt.find(params[:search]) #Doubt on hwo to write params here
   end
 
@@ -16,7 +19,6 @@ class PieceOfArtsController < ApplicationController
   end
 
   def create
-
     @piece_of_art = PieceOfArt.new(params_poa)
     @piece_of_art.user = current_user
     if @piece_of_art.save
@@ -25,6 +27,8 @@ class PieceOfArtsController < ApplicationController
       render :new
     end
   end
+
+
 
   private
 

@@ -32,8 +32,9 @@ class BookingsController < ApplicationController
     @booking.status = 'declined'
     @booking.save!
   end
+  redirect_to request.referrer
 
-  redirect_to bookings_path
+  # redirect_to bookings_path
 
   #addevent listener en fonction du boutton je change le status en "confirmed" ou "cancelled"
   #formulaire avec un object booking avec un champ caché qui me met le status

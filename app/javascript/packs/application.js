@@ -12,15 +12,16 @@ import "flatpickr/dist/flatpickr.css"; // Note this is important!
 import initFlatpickr from "../plugins/init_flatpickr";
 import initCarrousel from "../plugins/init_carrousel";
 import initLetters from "../plugins/init_letters";
+
 import { pricing } from "../plugins/init_totalprice";
+import initToggleActive from "../plugins/init_toggle_active";
 
-// document.addEventListener('turbolinks:load', () => {
-  initFlatpickr();
-  initCarrousel();
-  initLetters();
-  pricing();
+initFlatpickr();
+initCarrousel();
+initLetters();
+initToggleActive();
+pricing();
 
-// })
 
 // Carrousel
 
