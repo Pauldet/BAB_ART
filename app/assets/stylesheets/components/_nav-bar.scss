@@ -3,10 +3,16 @@
   flex-direction: row;
   justify-content: space-between;
   background: white;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid $light-gray;
    // position: fixed-top;
    // // top: 0;
    // z-index: 999;
+  a {
+    color: #402D2D;
+  }
+  .dropdown-menu {
+    transform: translate3d(-106px, 48px, 0px) !important;
+  }
 }
 
 

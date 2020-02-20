@@ -34,13 +34,7 @@ const initLetters = () => {
       easing: "easeOutExpo",
       duration: 600,
       offset: '-=600'
-    }).add({
-      targets: '.moving-letters',
-      opacity: [0,1],
-      duration: 6000,
-      easing: "easeOutExpo",
-      delay: 200
-  });
+    });
 }
 
 export default initLetters;

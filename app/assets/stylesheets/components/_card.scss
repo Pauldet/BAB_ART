@@ -13,6 +13,15 @@
   border-radius: 4px;
   opacity: 0.9;
   width: 100vw;
+    #slogan {
+      color: $light-gray;
+    }
+  .form-control:disabled, .form-control[readonly] {
+    background-color: #fff;
+  }
+  select {
+    color: #495057c7;
+  }
 
 }
 

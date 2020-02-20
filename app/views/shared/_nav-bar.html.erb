@@ -4,7 +4,9 @@
       <i class="fas fa-palette nav-bar-brand" style="font-size: 12px"></i
 
     </div> -->
-    <div class="moving-letters pt-4 flex-start">
+    <div class="moving-letters pt-4 flex-start" type="submit">
+
+      <%= link_to root_path do %>
         <h1 class="pb-4" style="font-size: 40px">
 
           <span class="text-wrapper">
@@ -15,6 +17,7 @@
             <span class="line line2"></span>
           </span>
         </h1>
+      <% end %>
     </div>
     <div class="nav-bar-side d-flex justify-content-end">
       <div class="nav-bar-collapse">
@@ -23,17 +26,17 @@
           </li>
           <li class="nav-item">
             <div class="btn-group">
-              <button type="button" class="btn btn-empty dropdown-toggle btn-navbar mx-1 list-group-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ...
+              <button type="button" class="btn btn-empty btn-navbar mx-1 list-group-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bars"></i>
               </button>
               <div class="dropdown-menu mr-5">
+                <%= link_to "Rent art", "/piece_of_arts/new", class: "btn btn-empty mx-1 list-group-item btn-navbar" %>
                 <a class="dropdown-item" href="/user/:id">My Profile</a>
                 <a class="dropdown-item" href="/bookings">My Bookings</a>
                 <a class="dropdown-item" href="/users/edit">Edit account info
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/users/sign_out" data-method= "delete">Log Out</a>
-                <%= link_to "Rent art", "/piece_of_arts/new", class: "btn btn-empty mx-1 list-group-item btn-navbar" %>
               </div>
             </div>
           </li>
