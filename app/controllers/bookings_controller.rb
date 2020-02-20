@@ -2,8 +2,18 @@ class BookingsController < ApplicationController
 
 
   def index
-    @bookings = Booking.where(user_id: current_user)
-    @pending_bookings = Booking.where(user_id: current_user, status: 'pending')
+    # "je suis un propriétaire qui a plusieurs oeuvre dart et je veux voir les bookings associé"
+    @piece_of_arts = PieceOfArt.where(user_id: current_user)
+    @allbookings = @piece_of_arts.map {|e| Booking.where(piece_of_art: e)}
+    # @bookingspending = Bookings.where()
+    @bookings = current_user.booked_poa
+    @pending_bookings = current_user.booked_poa.map { |booking| booking if booking.status == 'pending'  }.compact
+
+
+
+
+
+
   end
 
   def show
@@ -12,7 +22,8 @@ class BookingsController < ApplicationController
 
   def update
   @user = current_user
-  raise
+
+
   #addevent listener en fonction du boutton je change le status en "confirmed" ou "cancelled"
   #formulaire avec un object booking avec un champ caché qui me met le status
 
@@ -24,7 +35,7 @@ class BookingsController < ApplicationController
   #   end
   #   @booking = booking.find(params[:id])
   # end
-end
+  end
 
   def new
     @piece_of_art = PieceOfArt.find(params[:piece_of_art_id])
@@ -49,6 +60,7 @@ end
 private
 
   def params_booking
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
+
 end
