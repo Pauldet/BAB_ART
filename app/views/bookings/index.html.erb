@@ -1,26 +1,71 @@
-<h1> My bookings </h1>
+<h1> My Dashboard </h1>
 
 
-<h2> Pending my review </h2>
+  <h2> Pending my review </h2>
 
-<ul>
-  <% @pending_bookings.each do |booking| %>
+  <ul>
+    <% @owner_pending_bookings.each do |booking| %>
+    <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
 
-  <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
+          <%= simple_form_for(booking) do |f| %>
+            <%= f.submit "Approve", name:'Action', class:'btn-primary' %>
+            <%= f.submit "Decline", name:'Action', class:'btn-danger' %>
+          <% end %>
+    <!-- <form action="/booking/'#{booking.id}'" > <input type="submit" class="btn btn-primary" value="Approve" name="Approve" onClick="">
+  raise
+    </form> -->
+    </li>
 
-        <%= simple_form_for(booking) do |f| %>
-          <%= f.submit "Approve", name:'approve', class:'btn-primary' %>
-          <%= f.submit "Decline", name:'decline', class:'btn-danger' %>
-        <% end %>
-  <!-- <form action="/booking/'#{booking.id}'" > <input type="submit" class="btn btn-primary" value="Approve" name="Approve" onClick="">
+    <% end %>
+  </ul>
 
-  </form> -->
-  </li>
+  <h2> Accepted bookings </h2>
+  <ul>
+      <% @owner_approved_bookings.each do |booking| %>
 
+      <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
+
+            <%= simple_form_for(booking) do |f| %>
+              <%= f.submit "Cancel", name:'Action', class:'btn-danger' %>
+            <% end %>
+      </li>
+      <% end %>
+  </ul>
+
+  <h2> Currently Booked </h2>
+  <ul>
+      <% @owner_ongoing_bookings.each do |booking| %>
+
+      <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
+
+            <%= simple_form_for(booking) do |f| %>
+              <%= f.submit "Cancel", name:'Action', class:'btn-danger' %>
+            <% end %>
+      </li>
+      <% end %>
+  </ul>
+
+  <h2> Past bookings </h2>
+  <ul>
+  <% @owner_past_bookings.each do |booking| %>
+
+      <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
+      </li>
   <% end %>
+  </ul>
 
-</ul>
+  <h2> Declined Bookings </h2>
+  <ul>
+    <% @owner_declined_bookings.each do |booking| %>
 
-<h2> Currently booked </h2>
+          <li><%= booking.piece_of_art.name %> - Start date <%= booking.start_date %> End date <%= booking.end_date %>
+          </li>
+    <% end %>
+  </ul>
 
-<h2> Past bookings </h2>
+
+<!-- @owner_pending_bookings = current_user.booked_poa.map { |booking| booking if booking.status == 'pending'  }.compact
+    @owner_approved_bookings = current_user.booked_poa.map { |booking| booking if booking.status == 'approved'  }.compact
+    @owner_ongoing_bookings = current_user.booked_poa.map { |booking| booking if booking.status == 'ongoing'  }.compact
+    @owner_past_bookings = current_user.booked_poa.map { |booking| booking if booking.status == 'terminated'  }.compact
+    @owner_declined_bookings = current_user.booked_poa.map { |booking| booking if booking.status == 'declined'  }.compact -->
