@@ -4,6 +4,30 @@ class PieceOfArtsController < ApplicationController
 
   def index
     @piece_of_arts = PieceOfArt.all
+    results = []
+
+    if params[:query].present?
+      words = params[:query].split(' ')
+
+      words.each do |word|
+        results << PieceOfArt.search_by_name_and_artist_name(word)
+      end
+
+      @piece_of_arts = PieceOfArt.where(id: results.map { |c| c.pluck(:id) }.flatten)
+    end
+
+    if params[:post] && params[:post][:categories]
+      @piece_of_arts = @piece_of_arts.where(category: params[:post][:categories].reject(&:empty?))
+    end
+
+
+    # if params[:query].present?
+    #   @piece_of_arts = PieceOfArt.where(name: params[:query])
+    # else
+    #   @piece_of_arts
+    # end
+
+    # afficher dans l'index seulement les categories presentent dans le catalogue
     @categories = @piece_of_arts.uniq do |poa|
       poa.category
     end

@@ -1,4 +1,4 @@
-
+<!-- START OF FORM -->
     <div class="container-search-bar" >
       <%= simple_form_for :search, url: root_path, method: :get do |f| %>
         <div class="card-search d-flex flex-column" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://images.unsplash.com/photo-1541367777708-7905fe3296c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2272&q=80);">
@@ -28,13 +28,15 @@
           <input type="hidden" name="post[categories][]" value="">
 
           <div class="category-choices">
-            <% @categories.each do |poa| %>
-              <input hidden type="checkbox" value="<%= poa.category %>" name="post[categories][]" id="post_categories_<%= poa.category %>">
+            <% ['painting', 'sculpture', 'photos'].each do |category| %>
+              <input hidden type="checkbox" value="<%= category %>" name="post[categories][]" id="post_categories_<%= category %>">
 
-              <label class="category-choice" for="post_categories_<%= poa.category %>">
-                <%= poa.category %>
+              <label class="category-choice" for="post_categories_<%= category %>">
+                <%= category %>
               </label>
             <% end %>
+
+            <%#= f.input :categories, collection: ['painting', 'sculpture', 'photos'] %>
            </div>
         </div>
 
