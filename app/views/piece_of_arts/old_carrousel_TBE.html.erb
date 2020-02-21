@@ -1,34 +1,4 @@
 
-<%= render 'shared/banner-search' %>
-<div class="below-banner-container">
-  <section class="carrousel x-mandatory">
-    <div class="carrousel-items">
-      <h2>Most Wanted</h2>
-            <% @piece_of_arts.each do |poa| %>
-            <div class="carrousel-item">
-              <div class="carrousel-card">
-                    <div class="carrousel-img">
-                      <%= cl_image_tag poa.photo.key  %>
-
-                    </div>
-                    <h3><%= poa.name %></h3>
-                    <h4><%= poa.artist_name %></h4>
-                    <div class="card-content">
-                      <p><%= poa.description %></p>
-                      <p>Daily price <%= poa.daily_price %> €</p>
-                    </div>
-                  <% end %>
-              </div>
-            </div>
-
-
-
-    </div>
-  </section>
-
-<-- old carrousel ---->
-
-
   <div class="row carrousel-title">
     <h3>Most wanted</h3>
   </div>
