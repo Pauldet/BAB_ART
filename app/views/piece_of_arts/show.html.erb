@@ -18,7 +18,7 @@
       <p>Daily price: <%=@piece_of_art.daily_price %> €</p>
       <% if @piece_of_art.available_for_sale == true %>
         <p>Available for Sale!</p>
-        <p>Buying price :<%= @piece_of_art.buying_price %></p>
+        <p>Buying price :&nbsp<%= @piece_of_art.buying_price %></p>
       <% end %>
       <button name="button" type="submit" class="btn btn-empty" id="book-now-show-poa">
         <i class="fas fa-palette"> <%= link_to 'Book it!', new_piece_of_art_booking_path(@piece_of_art) %>

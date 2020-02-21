@@ -2,33 +2,46 @@
 <%= render 'shared/banner-search' %>
 <div class="below-banner-container">
   <section class="carrousel x-mandatory">
+    <h2>Most Wanted</h2>
     <div class="carrousel-items">
-      <h2>Most Wanted</h2>
-            <% @piece_of_arts.each do |poa| %>
-            <div class="carrousel-item">
-              <div class="carrousel-card">
-                    <div class="carrousel-img">
-                      <%= cl_image_tag poa.photo.key  %>
-
-                    </div>
-                    <h3><%= poa.name %></h3>
-                    <h4><%= poa.artist_name %></h4>
-                    <div class="card-content">
-                      <p><%= poa.description %></p>
-                      <p>Daily price <%= poa.daily_price %> €</p>
-                    </div>
-                  <% end %>
-              </div>
-            </div>
-
-
-
+      <% @piece_of_arts.each do |poa| %>
+        <div class="carrousel-item">
+        <div class="carrousel-card">
+          <div class="carrousel-img">
+            <%= cl_image_tag poa.photo.key  %>
+          </div>
+          <h3><%= poa.name %></h3>
+          <h4><%= poa.artist_name %></h4>
+          <div class="card-content">
+            <p><%= poa.description %></p>
+            <p class="price-in-card"><%= poa.daily_price %>&nbsp€ /day</p>
+          </div>
+        </div>
+      <% end %>
+      </div>
     </div>
   </section>
+  <div class="feed">
+    <% @piece_of_arts.each do |poa| %>
+    <%= link_to piece_of_art_path(poa) do  %>
+      <a>
+        <div class="carrousel-card">
+        <div class="carrousel-img">
+          <%= cl_image_tag poa.photo.key  %>
+        </div>
+        <h3><%= poa.name %></h3>
+        <h4><%= poa.artist_name %></h4>
+        <div class="card-content">
+          <p class="col-10"><%= poa.description %></p>
+          <p class="price-in-card col-2"><%= poa.daily_price %>&nbsp€ /day</p>
+        </div>
+        </div>
+      <% end %>
+      <% end %>
+      </a>
+  </div>
 
 <-- old carrousel ---->
-
-
   <div class="row carrousel-title">
     <h3>Most wanted</h3>
   </div>
@@ -46,7 +59,7 @@
             <div class="card-product-infos">
               <h2><%= link_to poa.name, piece_of_art_path(poa) %></h2>
               <p><%= poa.artist_name %></p>
-              <p><%= poa.daily_price %> €</p>
+              <p><%= poa.daily_price %>€</p>
             </div>
           </div>
         </div>
