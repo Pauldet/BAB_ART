@@ -1,43 +1,14 @@
 <%= render 'shared/banner-search' %>
 <div class="below-banner-container">
-  <section class="carrousel x-mandatory">
-    <div class="text-carrous">
-      <% if @piece_of_arts.count > 1 %>
+
+  <div class="feed">
+    <% if @piece_of_arts.count > 1 %>
         <p><%=@piece_of_arts.count%> pieces of art founded</p>
       <% elsif @piece_of_arts.count == 1 %>
         <p><%=@piece_of_arts.count%> piece of art founded</p>
       <% else %>
         <p>Sorry, we have nothing matching your criteria</p>
       <% end %>
-
-    </div>
-
-    <div class="carrousel-items">
-      <% @piece_of_arts.each do |poa| %>
-       <%= link_to piece_of_art_path(poa) do  %>
-        <div class="carrousel-item">
-        <div class="carrousel-card">
-          <div class="carrousel-img">
-            <% if poa.photo.attached? %>
-              <%= cl_image_tag poa.photo.key  %>
-            <% end %>
-          </div>
-          <h3><%= poa.name %></h3>
-          <h4><%= poa.artist_name %></h4>
-          <div class="card-content">
-            <p><%= poa.description %></p>
-            <p class="price-in-card"><%= poa.daily_price %>&nbsp€ /day</p>
-          </div>
-        </div>
-      <% end %>
-      <% end %>
-      </div>
-    </div>
-
-
-
-  </section>
-  <div class="feed">
     <% @piece_of_arts.each do |poa| %>
     <%= link_to piece_of_art_path(poa) do  %>
         <div class="carrousel-card">
@@ -57,59 +28,4 @@
       <% end %>
       <% end %>
   </div>
-
-<-- old carrousel ---->
-  <div class="row carrousel-title">
-    <h3>Most wanted</h3>
-  </div>
-  <div class="row">
-    <div class="swiper-container">
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-      <div class="swiper-wrapper">
-        <% @piece_of_arts.each do |poa| %>
-        <div class="swiper-slide">
-          <div class="card-product mr-5">
-            <% if poa.photo.attached? %>
-              <%= cl_image_tag poa.photo.key %>
-            <% end %>
-            <div class="card-product-infos">
-              <h2><%= link_to poa.name, piece_of_art_path(poa) %></h2>
-              <p><%= poa.artist_name %></p>
-              <p><%= poa.daily_price %>€</p>
-            </div>
-          </div>
-        </div>
-        <% end %>
-    </div>
-    </div>
-  </div>
-    <div class="row carrousel-title">
-      <h3>Latest pieces</h3>
-    </div>
-    <div class="row">
-      <div class="swiper-container">
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-          <div class="swiper-wrapper">
-          <% @piece_of_arts.each do |poa| %>
-          <div class="swiper-slide">
-            <div class="card-product mr-5">
-              <% if poa.photo.attached? %>
-                <%= cl_image_tag poa.photo.key %>
-              <% end %>
-              <div class="card-product-infos">
-                <h2><%= link_to poa.name, piece_of_art_path(poa) %></h2>
-                <p><%= poa.artist_name %></p>
-                <p><%= poa.daily_price%> €</p>
-              </div>
-            </div>
-          </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-</div>
-
-
 

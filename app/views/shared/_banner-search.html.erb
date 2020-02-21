@@ -28,7 +28,7 @@
           <input type="hidden" name="post[categories][]" value="">
 
           <div class="category-choices">
-            <% ['painting', 'sculpture', 'photos'].each do |category| %>
+            <% ['Painting', 'Sculpture', 'Photography'].each do |category| %>
               <input hidden type="checkbox" value="<%= category %>" name="post[categories][]" id="post_categories_<%= category %>">
 
               <label class="category-choice" for="post_categories_<%= category %>">
