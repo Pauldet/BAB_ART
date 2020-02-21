@@ -1,15 +1,26 @@
-
 <%= render 'shared/banner-search' %>
 <div class="below-banner-container">
   <section class="carrousel x-mandatory">
-    <h2>Most Wanted</h2>
+    <div class="text-carrous">
+      <% if @piece_of_arts.count > 1 %>
+        <p><%=@piece_of_arts.count%> pieces of art founded</p>
+      <% elsif @piece_of_arts.count == 1 %>
+        <p><%=@piece_of_arts.count%> piece of art founded</p>
+      <% else %>
+        <p>Sorry, we have nothing matching your criteria</p>
+      <% end %>
+
+    </div>
+
     <div class="carrousel-items">
       <% @piece_of_arts.each do |poa| %>
        <%= link_to piece_of_art_path(poa) do  %>
         <div class="carrousel-item">
         <div class="carrousel-card">
           <div class="carrousel-img">
-            <%= cl_image_tag poa.photo.key  %>
+            <% if poa.photo.attached? %>
+              <%= cl_image_tag poa.photo.key  %>
+            <% end %>
           </div>
           <h3><%= poa.name %></h3>
           <h4><%= poa.artist_name %></h4>
@@ -22,13 +33,19 @@
       <% end %>
       </div>
     </div>
+
+
+
   </section>
   <div class="feed">
     <% @piece_of_arts.each do |poa| %>
     <%= link_to piece_of_art_path(poa) do  %>
         <div class="carrousel-card">
         <div class="carrousel-img">
-          <%= cl_image_tag poa.photo.key  %>
+          <% if poa.photo.attached? %>
+            <%= cl_image_tag poa.photo.key  %>
+          <% end %>
+
         </div>
         <h3><%= poa.name %></h3>
         <h4><%= poa.artist_name %></h4>

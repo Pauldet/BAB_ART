@@ -16,7 +16,7 @@ class PieceOfArtsController < ApplicationController
       @piece_of_arts = PieceOfArt.where(id: results.map { |c| c.pluck(:id) }.flatten)
     end
 
-    if params[:post] && params[:post][:categories]
+    if params[:post] && params[:post][:categories].count > 1
       @piece_of_arts = @piece_of_arts.where(category: params[:post][:categories].reject(&:empty?))
     end
 
