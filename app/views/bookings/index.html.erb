@@ -9,61 +9,72 @@
     <% end %>
 
 
-<% if @owner_pending_bookings.blank? && @owner_approved_bookings.blank? && @owner_ongoing_bookings.blank? && @owner_past_bookings.blank? %>
+<% if @owner_pending_bookings.blank? && @owner_approved_bookings.blank? && @owner_ongoing_bookings.blank? && @owner_past_bookings.blank? && @owner_declined_bookings.blank? %>
 <p> You have no booking history yet </p>
 <% end %>
 
-<% if @owner_pending_bookings.present? || @owner_approved_bookings.present? || @owner_ongoing_bookings.present? || @owner_past_bookings.present? %>
+<% if @owner_pending_bookings.present? || @owner_approved_bookings.present? || @owner_ongoing_bookings.present? || @owner_past_bookings.present? || @owner_declined_bookings.present?  %>
 <h1> My Dashboard </h1>
 <% end %>
 
 <% if @owner_pending_bookings.present? %>
-  <h2> Pending my review </h2>
+  <h2 class="light-h text-center"> Pending my review </h2>
 
   <ul>
     <% @owner_pending_bookings.each do |booking| %>
-    <div class="card-pro-poa mr-5">
-        <% if booking.piece_of_art.photo.attached? %>
-          <%= cl_image_tag booking.piece_of_art.photo.key %>
-        <% end %>
+    <div class="card-pro-poa mr-5 d-flex justify-content-between align-items-center">
+       <div class="left-card d-flex">
+          <% if booking.piece_of_art.photo.attached? %>
+            <%= cl_image_tag booking.piece_of_art.photo.key %>
+          <% end %>
         <div class="card-product-infos">
-          <h2><%= booking.piece_of_art.name %></h2>
+            <h2><%= booking.piece_of_art.name %></h2>
             <p>Start Date: <%= booking.start_date %></p>
-            <p>End Date: <%= booking.start_date %></p>
+            <p>End Date: <%= booking.end_date %></p>
             <p>Total Price:<%= booking.total_price%>€</p>
-            <%= simple_form_for(booking) do |f| %>
-            <%= f.submit "Cancel", name:'Action', class:'btn-danger' %>
-            <% end %>
         </div>
+      </div>
+
+      <div class="right-card">
+        <div class="status-buttons d-flex flex-column">
+          <%= link_to 'Approve', booking_path(booking, params: { Action: 'Approve' }), method: :patch, class: 'btn btn-empty-poa mx-1  btn-navbar'  %>
+          <%= link_to 'Decline', booking_path(booking, params: { Action: 'Decline' }), method: :patch, class: 'btn btn-empty-poa mx-1  btn-navbar'  %>
+        </div>
+      </div>
     </div>
     <% end %>
   </ul>
 <% end %>
 
 <% if @owner_approved_bookings.present? %>
-  <h2> Accepted bookings </h2>
+  <h2 class="light-h text-center"> Accepted bookings </h2>
   <ul>
       <% @owner_approved_bookings.each do |booking| %>
-        <div class="card-pro-poa mr-5">
-      <% if booking.piece_of_art.photo.attached? %>
-        <%= cl_image_tag booking.piece_of_art.photo.key %>
-      <% end %>
-      <div class="card-product-infos">
-        <h2><%= booking.piece_of_art.name %></h2>
-        <p>Start Date: <%= booking.start_date %></p>
-        <p>End Date: <%= booking.start_date %></p>
-        <p>Total Price:<%= booking.total_price%>€</p>
-        <%= simple_form_for(booking) do |f| %>
-          <%= f.submit "Cancel", name:'Action', class:'btn-danger' %>
-        <% end %>
+      <div class="card-pro-poa mr-5 d-flex justify-content-between align-items-end">
+        <div class="left-card d-flex">
+          <% if booking.piece_of_art.photo.attached? %>
+            <%= cl_image_tag booking.piece_of_art.photo.key %>
+          <% end %>
+          <div class="card-product-infos">
+            <h2><%= booking.piece_of_art.name %></h2>
+            <p>Start Date: <%= booking.start_date %></p>
+            <p>End Date: <%= booking.end_date %></p>
+            <p>Total Price:<%= booking.total_price%>€</p>
+          </div>
+        </div>
+
+        <div class="right-card">
+          <div class="status-buttons d-flex flex-column">
+            <%= link_to 'Cancel', booking_path(booking, params: { Action: 'Cancel' }), method: :patch, class: 'btn btn-empty-poa mx-1 list-group-item btn-navbar'  %>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
+      <% end %>
 </ul>
 <% end %>
 
 <% if @owner_ongoing_bookings.present? %>
-  <h2> Currently Booked </h2>
+  <h2 class="light-h text-center"> Currently Booked </h2>
   <ul>
     <% @owner_ongoing_bookings.each do |booking| %>
       <div class="card-pro-poa mr-5">
@@ -73,7 +84,7 @@
         <div class="card-product-infos">
         <h2><%= booking.piece_of_art.name %></h2>
           <p>Start Date: <%= booking.start_date %></p>
-          <p>End Date: <%= booking.start_date %></p>
+          <p>End Date: <%= booking.end_date %></p>
           <p>Total Price:<%= booking.total_price%>€</p>
         </div>
       </div>
@@ -83,7 +94,7 @@
 
 
   <% if @owner_past_bookings.present? %>
-    <h2> Past Bookings </h2>
+    <h2 class="light-h text-center"> Past Bookings </h2>
         <ul>
           <% @past_bookings.each do |booking| %>
             <div class="card-pro-poa mr-5">
@@ -93,7 +104,7 @@
               <div class="card-product-infos">
                 <h2><%= booking.piece_of_art.name %></h2>
                 <p>Start Date: <%= booking.start_date %></p>
-                <p>End Date: <%= booking.start_date %></p>
+                <p>End Date: <%= booking.end_date %></p>
                 <p>Total Price:<%= booking.total_price%>€</p>
                 <h2><%= link_to 'Rate & review', booking_path(booking) %></h2>
               </div>
@@ -103,7 +114,7 @@
     <% end %>
 
   <% if @owner_declined_bookings.present? %>
-    <h2> Booking Declined </h2>
+    <h2 class="light-h text-center"> Booking Declined </h2>
     <ul>
       <% @owner_declined_bookings.each do |booking| %>
         <div class="card-pro-poa mr-5">
@@ -113,7 +124,7 @@
           <div class="card-product-infos">
           <h2><%= booking.piece_of_art.name %></h2>
             <p>Start Date: <%= booking.start_date %></p>
-            <p>End Date: <%= booking.start_date %></p>
+            <p>End Date: <%= booking.end_date %></p>
             <p>Total Price:<%= booking.total_price%>€</p>
           </div>
         </div>
