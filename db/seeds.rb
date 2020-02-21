@@ -1,23 +1,40 @@
 require "open-uri"
 # Booking.destroy.all
-PieceOfArt.destroy_all
-User.destroy_all
+#PieceOfArt.destroy_all
+#User.destroy_all
 # => Create 10 users
-puts 'Creating 10 fake users...'
-10.times do
-User.create!(email: Faker::Internet.email, password: '123456')
-end
-puts 'Creating 10 fake Piece Of Art...'
-10.times do
-  file = URI.open('https://source.unsplash.com/1600x900/?painting')
-  piece_of_art = PieceOfArt.create!(
-    name: Faker::Book.title,
-    description: Faker::Lorem.sentences,
-    category: ['painting', 'sculpture', 'photos'].sample,
-    daily_price: Faker::Commerce.price,
-    artist_name: Faker::Artist.name,
-    user: User.all.sample
+
+  10.times do
+    random_number = rand(2000..4000)
+    url = "https://collectionapi.metmuseum.org/public/collection/v1/objects/#{random_number}"
+    response = open(url).read
+    data = JSON.parse(response)
+
+
+    p data["title"]
+    p data["medium"]
+    p data["objectName"]
+    p data["artistDisplayName"]
+    p data["primaryImage"]
+    poa_api_id =[]
+    poa_api_id << data["objectID"]
+
+    piece_of_art = PieceOfArt.new(
+      name: data["title"].present? ? data["title"] : "Unknown",
+      description: data["medium"].present? ? data["title"] : "Unknown",
+      category: data["objectName"].present? ? data["objectDate"] : "Unknown",
+      daily_price: Faker::Commerce.price,
+      artist_name: data["artistDisplayName"].present? ? data["artistDisplayName"] : "Artist unknown",
+      user: User.all.sample,
+      creation_date: data["objectDate"].present? ? data["objectDate"] : "Unknown"
     )
-  piece_of_art.photo.attach(io: file, filename: "blabla", content_type: 'image/png')
-  piece_of_art.save
-end
+
+    if data["primaryImage"].present?
+      file = URI.open(data["primaryImage"])
+    else
+      file = URI.open('https://source.unsplash.com/1600x900/?painting')
+    end
+
+    piece_of_art.photo.attach(io: file, filename: "blabla", content_type: 'image/png')
+    piece_of_art.save!
+  end
