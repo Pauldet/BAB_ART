@@ -55,7 +55,7 @@ array_object_1.each do |objectid|
     piece_of_art = PieceOfArt.new(
       name: data["title"].present? ? data["title"] : "Unknown",
       description: data["medium"].present? ? data["title"] : "Unknown",
-      category: data["objectName"].present? ? data["objectDate"] : "Unknown",
+      category: data["objectName"].present? ? data["objectName"] : "Unknown",
       daily_price: Faker::Commerce.price,
       artist_name: data["artistDisplayName"].present? ? data["artistDisplayName"] : "Artist unknown",
       user: @user_1,
@@ -86,7 +86,7 @@ array_object_2.each do |objectid|
     piece_of_art = PieceOfArt.new(
       name: data["title"].present? ? data["title"] : "Unknown",
       description: data["medium"].present? ? data["title"] : "Unknown",
-      category: data["objectName"].present? ? data["objectDate"] : "Unknown",
+      category: data["objectName"].present? ? data["objectName"] : "Unknown",
       daily_price: Faker::Commerce.price,
       artist_name: data["artistDisplayName"].present? ? data["artistDisplayName"] : "Artist unknown",
       user: @user_2,
@@ -121,7 +121,7 @@ array_object_2.each do |objectid|
     piece_of_art = PieceOfArt.new(
       name: data["title"].present? ? data["title"] : "Unknown",
       description: data["medium"].present? ? data["title"] : "Unknown",
-      category: data["objectName"].present? ? data["objectDate"] : "Unknown",
+      category: data["objectName"].present? ? data["objectName"] : "Unknown",
       daily_price: Faker::Commerce.price,
       artist_name: data["artistDisplayName"].present? ? data["artistDisplayName"] : "Artist unknown",
       user: User.all.sample,
