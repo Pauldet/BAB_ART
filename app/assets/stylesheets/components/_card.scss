@@ -112,23 +112,25 @@
 
  .card-pro-poa {
   overflow: hidden;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   grid-template-columns: 1fr 1fr ;
   grid-gap: 16px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .card-pro-poa img {
-  height: 100%;
+  height: 100px;
   width: 120px;
   object-fit: cover;
 }
 
 .card-pro-poa h2 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   margin: 0;
 }
