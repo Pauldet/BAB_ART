@@ -1,15 +1,26 @@
 
 <!-- formfor -->
+<div class= "container" style="
 
-<%= simple_form_for @piece_of_art do |f| %>
-  <%= f.input :name %>
-  <%= f.input :category %>
-  <%= f.input :daily_price, placeholder: 'euros', as: :integer %>
-  <%= f.input :description, as: :text %>
-  <%= f.input :artist_name %>
-  <%= f.input :creation_date, as: :integer %>
-  <%= f.input :available_for_sale, as: :boolean %>
-  <%= f.input :buying_price, placeholder: 'euros', as: :integer %>
-  <%= f.input :photo, as: :file %>
-  <%= f.button :submit %>
-<% end %>
+background-image: linear-gradient(to bottom, rgba(0,255,0,0.5), rgba(0,0,255,0.5)),
+url(https://source.unsplash.com/1600x900/?painting);
+color: white;
+font-weight: bold;
+justify-content: center;
+">
+  <div class= "form-group" >
+    <%= simple_form_for @piece_of_art do |f| %>
+      <%= f.input :name %>
+      <%= f.input :category, :collection => %w[Painting Sculpture Photo] %>
+      <%= f.input :daily_price, placeholder: 'euros', as: :integer %>
+      <%= f.input :description, as: :text %>
+      <%= f.input :artist_name %>
+      <%= f.input :creation_date %>
+      <%= f.input :available_for_sale, as: :boolean %>
+      <%= f.input :buying_price, placeholder: 'euros', as: :integer %>
+      <%= f.input :photo, as: :file %>
+      <%= f.button :submit,:class => "btn btn-full mx-1 list-group-item btn-navbar" %>
+        </div>
+    <% end %>
+  </div>
+</div>
