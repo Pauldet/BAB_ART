@@ -1,0 +1,50 @@
+
+.carrousel-img img {
+      height: auto;
+      margin-bottom: .5rem;
+      max-width: calc(100% + 2rem);
+      position: relative;
+      left: -1rem;
+      right: -1rem;
+
+      width: 100vw;
+      object-fit: cover;
+}
+
+.carrousel {
+  width: 100%;
+  height: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #333;
+  overflow: scroll;
+  position: relative;
+}
+.carrousel-items {
+  display: flex;
+  overflow-x: scroll;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+  width: 1240px;
+}
+
+.carrousel-item {
+  flex: 1 0 250px;
+  margin-left: 1rem;
+  scroll-snap-align: start;
+}
+
+.carrousel-card {
+  border: 1px solid #bac6d3;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 90vw;
+  margin: 5vw;
+  box-shadow: 3px 0 10px rgba(100,100,100,0.2);
+  background-color: #FAFAF5;
+}
+
+
+
