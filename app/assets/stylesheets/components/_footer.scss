@@ -1,12 +1,12 @@
 .footer {
   background: #F4F4F4;
-  // position: absolute;
-  bottom: auto;
+  position: fixed;
+  bottom: 0px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  height: 55px;
+  height: 100px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
 }
